@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pädagogik-Chatbots – Geschichte der Pädagogik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root,[data-theme="light"]{
+--color-bg:#f5f2ec;--color-surface:#faf8f4;--color-surface-2:#fff;
+--color-surface-offset:#ede9e0;--color-surface-dynamic:#e5e0d4;
+--color-divider:#d8d2c4;--color-border:#ccc6b5;
+--color-text:#1e1b14;--color-text-muted:#6b6557;--color-text-faint:#a8a090;
+--color-text-inverse:#faf8f4;
+--color-primary:#5c4a1e;--color-primary-hover:#3d3010;--color-primary-active:#28200a;
+--color-primary-highlight:#ede0c0;
+--color-accent:#8b5e2a;--color-accent-hover:#6b4519;
+--color-gold:#c4941a;--color-warm:#a0522d;
+--radius-sm:0.375rem;--radius-md:0.5rem;--radius-lg:0.75rem;--radius-xl:1rem;--radius-full:9999px;
+--shadow-sm:0 1px 3px oklch(0.2 0.03 70/0.08);--shadow-md:0 4px 16px oklch(0.2 0.03 70/0.12);--shadow-lg:0 12px 40px oklch(0.2 0.03 70/0.18);
+--transition:180ms cubic-bezier(0.16,1,0.3,1);
+--font-display:'Lora',Georgia,serif;--font-body:'Inter',system-ui,sans-serif;
+--text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);
+--text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);
+--text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);
+--text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);
+--text-xl:clamp(1.5rem,1.2rem + 1.25vw,2rem);
+--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;
+--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;
+--space-12:3rem;--space-16:4rem;
+}
+[data-theme="dark"]{
+--color-bg:#171410;--color-surface:#1e1b15;--color-surface-2:#252118;
+--color-surface-offset:#1a1710;--color-surface-dynamic:#2e2a20;
+--color-divider:#302c22;--color-border:#3d3828;
+--color-text:#d8d0c0;--color-text-muted:#857c6a;--color-text-faint:#5a5448;
+--color-text-inverse:#1e1b14;
+--color-primary:#c8a85a;--color-primary-hover:#e8c87a;
+--color-primary-highlight:#3a3020;
+--color-accent:#d4924a;--color-gold:#e0b030;
+--shadow-sm:0 1px 3px oklch(0 0 0/0.25);--shadow-md:0 4px 16px oklch(0 0 0/0.35);--shadow-lg:0 12px 40px oklch(0 0 0/0.45);
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){
+--color-bg:#171410;--color-surface:#1e1b15;--color-surface-2:#252118;
+--color-surface-offset:#1a1710;--color-surface-dynamic:#2e2a20;
+--color-divider:#302c22;--color-border:#3d3828;
+--color-text:#d8d0c0;--color-text-muted:#857c6a;--color-text-faint:#5a5448;
+--color-text-inverse:#1e1b14;
+--color-primary:#c8a85a;--color-primary-hover:#e8c87a;
+--color-primary-highlight:#3a3020;
+--color-accent:#d4924a;--color-gold:#e0b030;
+--shadow-sm:0 1px 3px oklch(0 0 0/0.25);--shadow-md:0 4px 16px oklch(0 0 0/0.35);--shadow-lg:0 12px 40px oklch(0 0 0/0.45);
+}}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+body{min-height:100dvh;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);line-height:1.6}
+img{display:block;max-width:100%;height:auto}
+button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
+a,button,[role="button"],input,textarea{transition:color var(--transition),background var(--transition),border-color var(--transition),box-shadow var(--transition)}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+::selection{background:oklch(from var(--color-primary) l c h/0.25);color:var(--color-text)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* ── HEADER ─────────────────────────────────────────────── */
+.site-header{
+  background:var(--color-surface);
+  border-bottom:1px solid var(--color-border);
+  padding:var(--space-4) var(--space-6);
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+  box-shadow:var(--shadow-sm);
+}
+.logo{display:flex;align-items:center;gap:var(--space-3)}
+.logo-mark{width:36px;height:36px;flex-shrink:0}
+.logo-text h1{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;line-height:1.1;color:var(--color-primary)}
+.logo-text span{font-size:var(--text-xs);color:var(--color-text-muted)}
+.header-actions{display:flex;align-items:center;gap:var(--space-3)}
+.theme-toggle{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-md);border:1px solid var(--color-border);color:var(--color-text-muted)}
+.theme-toggle:hover{background:var(--color-surface-offset);color:var(--color-text)}
+.epoch-badge{font-size:var(--text-xs);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);background:var(--color-primary-highlight);color:var(--color-primary);font-weight:600;letter-spacing:0.04em}
+
+/* ── HERO ────────────────────────────────────────────────── */
+.hero{
+  padding:var(--space-12) var(--space-6) var(--space-10);
+  text-align:center;
+  background:linear-gradient(180deg,var(--color-surface) 0%,var(--color-bg) 100%);
+  border-bottom:1px solid var(--color-divider);
+}
+.hero h2{font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--color-primary);margin-bottom:var(--space-3)}
+.hero p{font-size:var(--text-sm);color:var(--color-text-muted);max-width:60ch;margin:0 auto var(--space-6)}
+.hint-chips{display:flex;flex-wrap:wrap;gap:var(--space-2);justify-content:center}
+.hint-chip{font-size:var(--text-xs);padding:var(--space-1) var(--space-3);background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-full);color:var(--color-text-muted)}
+
+/* ── PEDAGOGUE GRID ──────────────────────────────────────── */
+.pedagogue-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));
+  gap:var(--space-5);
+  padding:var(--space-8) var(--space-6);
+  max-width:1200px;margin:0 auto;
+}
+.ped-card{
+  background:var(--color-surface);
+  border:1px solid oklch(from var(--color-text) l c h/0.1);
+  border-radius:var(--radius-xl);
+  overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  cursor:pointer;
+  transition:transform var(--transition),box-shadow var(--transition);
+  display:flex;flex-direction:column;
+}
+.ped-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.ped-card:active{transform:translateY(0)}
+.ped-card-image{
+  width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top center;
+  background:var(--color-surface-offset);
+  border-bottom:1px solid var(--color-divider);
+}
+.ped-card-body{padding:var(--space-4) var(--space-5) var(--space-5)}
+.ped-card-era{font-size:var(--text-xs);color:var(--color-text-muted);margin-bottom:var(--space-2);letter-spacing:0.05em;text-transform:uppercase}
+.ped-card-name{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;color:var(--color-primary);margin-bottom:var(--space-2);line-height:1.2}
+.ped-card-tagline{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.5;margin-bottom:var(--space-4)}
+.ped-card-btn{
+  display:inline-flex;align-items:center;gap:var(--space-2);
+  font-size:var(--text-sm);font-weight:600;
+  padding:var(--space-2) var(--space-4);
+  background:var(--color-primary);color:var(--color-text-inverse);
+  border-radius:var(--radius-md);border:none;cursor:pointer;
+  transition:background var(--transition);
+}
+.ped-card-btn:hover{background:var(--color-primary-hover)}
+
+/* ── CHAT MODAL ──────────────────────────────────────────── */
+.modal-overlay{
+  position:fixed;inset:0;z-index:200;
+  background:oklch(0.1 0.02 70/0.6);
+  backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;
+  padding:var(--space-4);
+  opacity:0;pointer-events:none;
+  transition:opacity var(--transition);
+}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.chat-modal{
+  background:var(--color-surface);
+  border-radius:var(--radius-xl);
+  box-shadow:var(--shadow-lg);
+  width:100%;max-width:680px;
+  height:min(85dvh,780px);
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  transform:translateY(20px) scale(0.98);
+  transition:transform 250ms cubic-bezier(0.16,1,0.3,1);
+  border:1px solid var(--color-border);
+}
+.modal-overlay.open .chat-modal{transform:none}
+.chat-header{
+  padding:var(--space-4) var(--space-5);
+  background:var(--color-surface-offset);
+  border-bottom:1px solid var(--color-divider);
+  display:flex;align-items:center;gap:var(--space-4);
+  flex-shrink:0;
+}
+.chat-avatar{
+  width:52px;height:52px;border-radius:var(--radius-full);
+  object-fit:cover;object-position:top center;
+  border:2px solid var(--color-border);
+  flex-shrink:0;background:var(--color-surface-dynamic);
+}
+.chat-header-info{flex:1;min-width:0}
+.chat-header-info h2{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-primary);line-height:1.2}
+.chat-header-info span{font-size:var(--text-xs);color:var(--color-text-muted)}
+.chat-close{
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  border-radius:var(--radius-md);color:var(--color-text-muted);
+  border:1px solid var(--color-border);
+}
+.chat-close:hover{background:var(--color-surface-dynamic);color:var(--color-text)}
+.chat-messages{
+  flex:1;overflow-y:auto;
+  padding:var(--space-5);
+  display:flex;flex-direction:column;gap:var(--space-4);
+}
+.chat-messages::-webkit-scrollbar{width:6px}
+.chat-messages::-webkit-scrollbar-track{background:transparent}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--color-border);border-radius:3px}
+.message{max-width:88%;display:flex;flex-direction:column;gap:var(--space-1)}
+.message.bot{align-self:flex-start}
+.message.user{align-self:flex-end}
+.msg-bubble{
+  padding:var(--space-3) var(--space-4);
+  border-radius:var(--radius-lg);
+  font-size:var(--text-sm);line-height:1.65;
+  max-width:72ch;
+}
+.message.bot .msg-bubble{
+  background:var(--color-surface-2);
+  border:1px solid oklch(from var(--color-text) l c h/0.08);
+  color:var(--color-text);
+  border-bottom-left-radius:var(--radius-sm);
+}
+.message.user .msg-bubble{
+  background:var(--color-primary);
+  color:var(--color-text-inverse);
+  border-bottom-right-radius:var(--radius-sm);
+}
+.msg-bubble b,.msg-bubble strong{color:inherit;font-weight:600}
+.msg-bubble em{font-style:italic;opacity:0.85}
+.msg-meta{font-size:var(--text-xs);color:var(--color-text-faint);padding:0 var(--space-1)}
+.message.user .msg-meta{text-align:right}
+.quote-block{
+  border-left:3px solid var(--color-gold);
+  padding:var(--space-2) var(--space-3);
+  margin:var(--space-2) 0;
+  background:color-mix(in oklch,var(--color-gold) 8%,var(--color-surface-2));
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+  font-style:italic;font-size:0.95em;
+}
+.typing-indicator{
+  display:flex;align-items:center;gap:var(--space-2);
+  padding:var(--space-3) var(--space-4);
+  background:var(--color-surface-2);
+  border:1px solid oklch(from var(--color-text) l c h/0.08);
+  border-radius:var(--radius-lg);border-bottom-left-radius:var(--radius-sm);
+  width:fit-content;max-width:88%;
+}
+.typing-dot{width:7px;height:7px;border-radius:50%;background:var(--color-text-faint);animation:blink 1.2s ease-in-out infinite}
+.typing-dot:nth-child(2){animation-delay:0.2s}
+.typing-dot:nth-child(3){animation-delay:0.4s}
+@keyframes blink{0%,80%,100%{opacity:0.3}40%{opacity:1}}
+.suggestions{
+  padding:var(--space-3) var(--space-5);
+  display:flex;flex-wrap:wrap;gap:var(--space-2);
+  border-top:1px solid var(--color-divider);
+  background:var(--color-surface-offset);
+  flex-shrink:0;
+}
+.suggestion-btn{
+  font-size:var(--text-xs);padding:var(--space-2) var(--space-3);
+  background:var(--color-surface);border:1px solid var(--color-border);
+  border-radius:var(--radius-full);color:var(--color-text-muted);
+  cursor:pointer;transition:all var(--transition);white-space:nowrap;
+  max-width:100%;overflow:hidden;text-overflow:ellipsis;
+}
+.suggestion-btn:hover{background:var(--color-primary-highlight);border-color:var(--color-primary);color:var(--color-primary)}
+.chat-input-area{
+  padding:var(--space-4) var(--space-5);
+  border-top:1px solid var(--color-divider);
+  display:flex;gap:var(--space-3);align-items:flex-end;
+  background:var(--color-surface);
+  flex-shrink:0;
+}
+.chat-input{
+  flex:1;padding:var(--space-3) var(--space-4);
+  background:var(--color-surface-offset);
+  border:1px solid var(--color-border);
+  border-radius:var(--radius-lg);
+  font:inherit;font-size:var(--text-sm);
+  color:var(--color-text);resize:none;
+  min-height:44px;max-height:120px;
+  line-height:1.5;
+}
+.chat-input:focus{outline:2px solid var(--color-primary);outline-offset:2px;background:var(--color-surface-2)}
+.chat-input::placeholder{color:var(--color-text-faint)}
+.send-btn{
+  width:44px;height:44px;border-radius:var(--radius-lg);
+  background:var(--color-primary);color:var(--color-text-inverse);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:background var(--transition);
+  border:none;cursor:pointer;
+}
+.send-btn:hover{background:var(--color-primary-hover)}
+.send-btn:disabled{opacity:0.4;cursor:not-allowed}
+
+/* ── FOOTER ──────────────────────────────────────────────── */
+.site-footer{
+  text-align:center;padding:var(--space-8);
+  color:var(--color-text-faint);font-size:var(--text-xs);
+  border-top:1px solid var(--color-divider);
+  margin-top:var(--space-8);
+}
+
+@media(max-width:600px){
+.pedagogue-grid{padding:var(--space-5) var(--space-4);gap:var(--space-4)}
+.hero{padding:var(--space-8) var(--space-4)}
+.chat-modal{height:100dvh;max-width:100%;border-radius:0}
+.modal-overlay{padding:0}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">
+    <svg class="logo-mark" aria-label="Pädagogik Chatbots Logo" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="36" height="36" rx="8" fill="var(--color-primary)"/>
+      <circle cx="18" cy="13" r="5" stroke="var(--color-text-inverse)" stroke-width="1.8" fill="none"/>
+      <path d="M10 28c0-4.418 3.582-8 8-8s8 3.582 8 8" stroke="var(--color-text-inverse)" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <path d="M8 18h3M25 18h3M18 5V3" stroke="var(--color-text-inverse)" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+    </svg>
+    <div class="logo-text">
+      <h1>Pädagogik-Dialoge</h1>
+      <span>Geschichte der Erziehungswissenschaft</span>
+    </div>
+  </div>
+  <div class="header-actions">
+    <span class="epoch-badge">Erzieherinnenausbildung</span>
+    <button class="theme-toggle" data-theme-toggle aria-label="Farbschema wechseln">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <h2>Gespräche mit großen Pädagog*innen</h2>
+  <p>Wähle eine Persönlichkeit aus und starte einen Dialog. Jeder Chatbot antwortet aus der Perspektive seiner Zeit – mit Originalzitaten, pädagogischen Konzepten und Bezug zur heutigen Kitapraxis.</p>
+  <div class="hint-chips">
+    <span class="hint-chip">💡 Stelle Fragen zur Biografie</span>
+    <span class="hint-chip">📚 Frage nach Methoden</span>
+    <span class="hint-chip">🏫 Frage nach der Rolle der Erzieherin</span>
+    <span class="hint-chip">🔍 Vergleiche Ansätze</span>
+  </div>
+</section>
+
+<div class="pedagogue-grid" id="grid">
+  <!-- Karten werden per JS eingefügt -->
+</div>
+</main>
+
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-label="Pädagoge Chat">
+  <div class="chat-modal" id="chatModal">
+    <div class="chat-header">
+      <img class="chat-avatar" id="chatAvatar" src="" alt="" width="52" height="52" loading="lazy">
+      <div class="chat-header-info">
+        <h2 id="chatName"></h2>
+        <span id="chatSubtitle"></span>
+      </div>
+      <button class="chat-close" id="chatClose" aria-label="Chat schließen">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="suggestions" id="suggestions"></div>
+    <div class="chat-input-area">
+      <textarea class="chat-input" id="chatInput" placeholder="Stelle eine Frage…" rows="1" aria-label="Nachricht eingeben"></textarea>
+      <button class="send-btn" id="sendBtn" aria-label="Senden">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>Lernplattform für die Erzieherinnenausbildung &bull; LP1: Erziehen als pädagogisches Handeln professionalisieren &bull; Alle Antworten basieren auf historisch belegten Quellen.</p>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+//  WISSENSDATENBANK – angereichert mit PDF-Material (Walter WAL)
+//  und erweitertem historischem Kontext
+// ═══════════════════════════════════════════════════════════════
+
+const PEDAGOGUES = [
+
+// ── 1. COMENIUS ──────────────────────────────────────────────
+{
+  id:"comenius",
+  name:"Johann Amos Comenius",
+  years:"1592–1670",
+  era:"Barock · Frühaufklärung",
+  tagline:"Alle alles gründlich zu lehren – die erste Didaktik der Neuzeit",
+  image:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Jan_Amos_Comenius_Rembrandt.jpg/440px-Jan_Amos_Comenius_Rembrandt.jpg",
+  color:"#6b4c2a",
+  greeting:`Guten Tag, junge Freundin der Erziehungskunst! Ich bin Johannes Amos Comenius, Bischof der Böhmischen Brüder und wohl der erste, der eine systematische <strong>Didaktik</strong> – eine Kunst des Lehrens – für alle Menschen entworfen hat. Mein Leben war von Krieg, Vertreibung und Verlust geprägt, doch genau das trieb mich an: In einer zerrissenen Welt glaubte ich fest, dass Bildung Frieden stiften kann. Was möchtest du von mir wissen?`,
+  suggestions:["Wer warst du und wo lebtest du?","Was ist die Didactica Magna?","Was bedeutet 'Anschauungsprinzip'?","Was ist der Orbis Pictus?","Welche Rolle spielt die Erzieherin?","Wie unterscheidest du dich von Rousseau?"],
+  knowledge:{
+    "biografie|wer bist du|leben|herkunft":
+      `Ich wurde 1592 in Mähren (heute Tschechien) geboren und wuchs im Glauben der <strong>Böhmischen Brüder</strong> auf, einer protestantischen Gemeinschaft. Der Dreißigjährige Krieg (1618–1648) zwang mich mehrfach ins Exil – ich lebte in Polen, Schweden, Ungarn, England und den Niederlanden. All meine Kinder starben, meine Manuskripte verbrannten 1656 in Lissa. Trotz allem schrieb ich über 100 Werke. Ich starb 1670 in Amsterdam.\n\n<em>Mein Schicksal lehrte mich: Bildung ist das Einzige, das man einem Menschen nicht nehmen kann.</em>`,
+    "didactica|didaktik|lehren|omnes omnia":
+      `Meine <strong>Didactica Magna</strong> (Große Unterrichtslehre, 1657) ist das erste systematische Werk über Pädagogik. Ihr Programm fasst sich in einem Satz: <div class="quote-block">„Allen alles vollständig zu lehren" – Omnes Omnia Omnino.</div>Das bedeutet: <strong>Alle Menschen</strong> (arm wie reich, Mädchen wie Jungen), sollen <strong>alles Wesentliche</strong> lernen, und zwar <strong>gründlich</strong> – nicht oberflächlich. Bildung ist ein Menschenrecht, kein Privileg. Das war 1657 revolutionär!`,
+    "anschauung|sinne|sinnlich|erfahrung":
+      `Das <strong>Anschauungsprinzip</strong> ist mein wichtigster methodischer Grundsatz: Kinder lernen nicht durch abstrakte Worte, sondern durch das direkte Erleben mit allen Sinnen. <div class="quote-block">„Nichts soll im Verstand sein, was nicht zuvor in den Sinnen war."</div>Praktisch heißt das: Zeige das Ding, bevor du das Wort nennst. Gehe mit Kindern in die Natur. Nutze Bilder und Gegenstände. Kein leeres Wiederholen von Definitionen!`,
+    "orbis pictus|bilder|bilderbuch":
+      `Der <strong>Orbis Sensualium Pictus</strong> (1658 – „Die sichtbare Welt in Bildern") war das erste bebilderte Kinderlehrbuch der Geschichte. Zu jedem Sachbereich – Tiere, Handwerk, Himmel, Kirche – gibt es ein Bild mit nummerierten Teilen und den entsprechenden Wörtern in Latein und der Muttersprache. Es war ein Welterfolg und wurde in viele Sprachen übersetzt. Das Prinzip: Das <strong>Bild kommt vor dem Wort</strong> – Anschauung vor Abstraktion.`,
+    "schule|unterricht|stufenmodell|alter":
+      `Ich entwickelte ein <strong>Stufenmodell der Erziehung</strong>: Mutterschule (0–6 J.), Muttersprachschule (6–12 J.), Lateinschule (12–18 J.) und Akademie (ab 18 J.). Jede Stufe baut auf der vorherigen auf. Für den Kindergartenbereich gilt: In der <em>Mutterschule</em> ist die Mutter die erste Erzieherin. Spiel, Bewegung, Sinneserfahrung und das Lernen aus der natürlichen Umgebung stehen im Vordergrund.`,
+    "erzieherin|rolle|fachkraft|pädagoge":
+      `Die Erzieherin ist für mich eine Art <strong>Gärtnerin</strong>: Sie schafft die Bedingungen für Wachstum, sie düngt, schützt und beobachtet – aber sie kann die Pflanze nicht wachsen zwingen. Ihre wichtigste Eigenschaft ist Geduld und die Fähigkeit, Wissen <strong>anschaulich</strong> zu vermitteln. Sie muss vom Einfachen zum Komplexen, vom Bekannten zum Unbekannten führen – das nenne ich das <em>Prinzip des Voranschreitens</em>.`,
+    "rousseau|vergleich|unterschied|unterschiede":
+      `Rousseau (100 Jahre nach mir) baute auf meinen Grundgedanken auf, radikalisierte sie aber: Für ihn soll das Kind fast ohne Einwirkung Erwachsener in der Natur aufwachsen. Ich hingegen halte geordneten Unterricht für notwendig. Beide betonen Anschauung und Naturnähe – doch ich glaube an systematische, strukturierte Bildung für <em>alle</em>, während Rousseau eher eine Erziehung des freien, unabhängigen Individuums im Sinn hat.`,
+    "frieden|religion|glaube|theologie":
+      `Mein Denken ist zutiefst religiös geprägt. Als Bischof der Böhmischen Brüder glaubte ich, dass <strong>Bildung und Religion</strong> zusammengehören. Gleichzeitig war ich einer der ersten, der eine <em>ökumenische</em> Vision hatte: Alle christlichen Konfessionen sollten in Frieden miteinander leben. Mein Werk <em>Pansophia</em> (All-Weisheit) strebte nach einer universellen Synthese allen Wissens als Grundlage für Weltfrieden.`
+  }
+},
+
+// ── 2. ROUSSEAU ──────────────────────────────────────────────
+{
+  id:"rousseau",
+  name:"Jean-Jacques Rousseau",
+  years:"1712–1778",
+  era:"Aufklärung · Genf / Paris",
+  tagline:"Der Mensch ist von Natur aus gut – die Gesellschaft verdirbt ihn",
+  image:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Jean-Jacques_Rousseau_%28painted_portrait%29.jpg/440px-Jean-Jacques_Rousseau_%28painted_portrait%29.jpg",
+  color:"#4a7c40",
+  greeting:`Bonsoir, madame! Ich, Jean-Jacques Rousseau, Philosoph, Schriftsteller und unbequemer Denker des 18. Jahrhunderts, freue mich über deine Frage. Mein Leben war voller Widersprüche – ich schrieb über Erziehung und gab meine eigenen Kinder ins Waisenhaus. Doch meine Ideen haben die Pädagogik für immer verändert. <div class="quote-block">„Der Mensch wird frei geboren, und überall liegt er in Ketten."</div> Was willst du von mir wissen?`,
+  suggestions:["Was ist deine Naturerziehung?","Wer ist Émile – dein Erziehungsroman?","Wie soll man Kinder NICHT erziehen?","Was denkst du über Frauen und Erziehung?","Welchen Einfluss hattest du auf Pestalozzi?","Kindheit als eigene Lebensphase?"],
+  knowledge:{
+    "natur|naturerziehung|natürlich|ursprung":
+      `Mein Grundsatz lautet: <div class="quote-block">„Alles ist gut, wie es aus den Händen des Schöpfers kommt; alles entartet unter den Händen des Menschen." (Émile, 1762)</div>Ich glaube, dass das Kind von Natur aus gut und unverfälscht ist. Die Gesellschaft mit ihren falschen Normen, Eitelkeiten und Zwängen verdirbt diese natürliche Güte. Erziehung muss deshalb das Kind vor schädlichen gesellschaftlichen Einflüssen schützen und seine natürliche Entwicklung unterstützen – das nenne ich <strong>negative Erziehung</strong>.`,
+    "emile|erziehungsroman|roman|buch":
+      `<strong>Émile ou de l'éducation</strong> (1762) ist mein pädagogisches Hauptwerk – halb Roman, halb Traktat. Ich beschreibe, wie ein fiktiver Knabe namens Émile von einem idealen Erzieher (dem „Gouverneur") auf dem Land aufgezogen wird, fernab der verderblichen Stadt. Das Werk ist in <strong>fünf Bücher</strong> gegliedert, die den Entwicklungsstufen entsprechen:\n\n• Buch 1 (0–2 J.): Körperpflege, Sinnesentwicklung\n• Buch 2 (2–12 J.): Negative Erziehung, Lernen durch Erfahrung\n• Buch 3 (12–15 J.): Naturkunde, Handwerk\n• Buch 4 (15–20 J.): Moralische und religiöse Erziehung\n• Buch 5: Sophie – die Erziehung der Frau`,
+    "negative erziehung|eingriff|fernhalten|nichteingreifen":
+      `<strong>Negative Erziehung</strong> bedeutet NICHT, das Kind zu vernachlässigen. Es bedeutet: Der Erzieher greift <em>nicht aktiv</em> ein, er lässt das Kind seine eigenen Erfahrungen machen und aus Konsequenzen lernen. <div class="quote-block">„Gewöhnt euer Kind an nichts – erlaubt ihm alles."</div>Wenn Émile den Topf anfasst und sich verbrennt, lernt er mehr über Feuer als durch zehn Ermahnungen. Die Natur selbst wird zum besten Lehrer. Das Prinzip: <strong>natürliche Konsequenzen</strong> statt Bestrafung.`,
+    "entwicklungsstufen|alter|phasen|stufen":
+      `Ich beschreibe vier Entwicklungsphasen:\n\n1. <strong>Säuglings- und Kleinkindalter (0–2)</strong>: Körperliche Gesundheit, Stillen, keine künstliche Einschränkung\n2. <strong>Kindheit (2–12)</strong>: Das „Schlafstadium der Vernunft" – Sinneserziehung, Bewegung, Spiel. Keine Bücher! Kein theoretisches Lernen.\n3. <strong>Vorpubertät (12–15)</strong>: Erst jetzt lernen durch Handwerk und Naturbeobachtung\n4. <strong>Jugend (15–20)</strong>: Soziales Lernen, Moral, Gefühle, Religion\n\nDie Kindheit ist eine <strong>eigenständige Lebensphase</strong> – kein verkürztes Erwachsenenleben!`,
+    "frau|sophie|mädchen|gender|weiblich":
+      `Hier liegt ein großer Widerspruch meines Denkens: Während ich Émile zur Freiheit und zum selbstständigen Denken erziehe, bleibt <strong>Sophie</strong> (Buch 5) auf die Rolle der tugendhaften Ehefrau und Mutter beschränkt. Ihre Erziehung zielt auf Gefälligkeit und Unterordnung – eine Position, die meine Kritikerin <em>Mary Wollstonecraft</em> 1792 scharf angriff. Ich war Kind meiner Zeit. Diese Sicht ist heute zu Recht überwunden.`,
+    "pestalozzi|einfluss|wirkung|nachfolger":
+      `Pestalozzi war tief von mir beeinflusst. Er las den <em>Émile</em> und war ergriffen. Doch er übersetzte meine philosophischen Ideen in <strong>praktische Unterrichtsmethoden</strong> für arme Kinder – etwas, das ich selbst nie getan habe. Fröbel wiederum baute auf Pestalozzi auf. So entstand eine Kette: Rousseau → Pestalozzi → Fröbel → Montessori. Die Grundidee – das Kind in seiner Natur achten – zieht sich durch alle.`,
+    "kindheit|eigenständig|lebensphase|kind":
+      `Mein vielleicht revolutionärster Gedanke: <strong>Die Kindheit ist kein Mangel, sondern eine eigene Lebensform.</strong> Im 18. Jahrhundert galten Kinder als kleine Erwachsene, die möglichst schnell zu funktionierenden Bürgerinnen und Bürgern geformt werden sollten. Ich sage: Nein! Das Kind denkt, fühlt und lernt anders als der Erwachsene. <div class="quote-block">„Man kennt die Kindheit nicht; mit den falschen Vorstellungen, die man von ihr hat, verirrt man sich weiter, je mehr man geht."</div>`
+  }
+},
+
+// ── 3. PESTALOZZI ────────────────────────────────────────────
+{
+  id:"pestalozzi",
+  name:"Johann Heinrich Pestalozzi",
+  years:"1746–1827",
+  era:"Aufklärung · Schweiz · Neuhumanismus",
+  tagline:"Kopf, Herz und Hand – Bildung für alle armen Kinder",
+  image:"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Johann_Heinrich_Pestalozzi.jpg/440px-Johann_Heinrich_Pestalozzi.jpg",
+  color:"#5c3a1e",
+  greeting:`Guten Tag! Ich bin Heinrich Pestalozzi aus Zürich. Mein ganzes Leben habe ich dem Gedanken gewidmet, dass Bildung kein Vorrecht der Reichen sein darf. Ich habe mit verwahrlosten Waisenkindern zusammengelebt, mit ihnen gegessen und geschlafen – und dabei mehr über wahre Erziehung gelernt als in allen Büchern. <div class="quote-block">„Das Wesen der Menschenbildung liegt im Tätigsein."</div> Was möchtest du wissen?`,
+  suggestions:["Kopf, Herz und Hand – was bedeutet das?","Was sind deine Waisenhäuser und Schulen?","Was ist elementare Bildung?","Wie sah deine Methode aus?","Was unterscheidet dich von Rousseau?","Welchen Einfluss hattest du auf Fröbel?"],
+  knowledge:{
+    "kopf herz hand|dreiheit|ganzheitlich|ganzer mensch":
+      `Meine bekannteste Formel beschreibt die <strong>Ganzheitlichkeit der Bildung</strong>:\n\n• <strong>Kopf</strong> (Geist / Verstand): Das intellektuelle Denken, Verstehen von Zusammenhängen – nicht auswendig lernen, sondern begreifen\n• <strong>Herz</strong> (Gemüt / Moral): Gefühle, Empathie, Liebe, sittliche Haltung – die emotionale Dimension der Bildung\n• <strong>Hand</strong> (Körper / Praxis): Handwerkliche Fähigkeiten, körperliche Geschicklichkeit, das tätige Tun\n\n<div class="quote-block">„Das Wesen der Menschenbildung liegt im Tätigsein."</div>\n\nAlle drei Kräfte müssen gleichzeitig und im Gleichgewicht entwickelt werden – keine davon darf vernachlässigt werden. Dieser Gedanke war 1800 revolutionär!`,
+    "waisenhaus|stans|burgdorf|yverdon|schule":
+      `Ich lebte meine Pädagogik – buchstäblich:\n\n• <strong>Neuhof (1774)</strong>: Armenschule auf meinem Hof – scheiterte finanziell, lehrte mich aber enorm\n• <strong>Stans (1798–1799)</strong>: Waisenhaus nach dem Einmarsch französischer Truppen – 80 verwahrloste Kinder, nur ich als Bezugsperson, extremste Lebensbedingungen, dennoch pädagogisch prägend\n• <strong>Burgdorf (1800–1804)</strong>: Institutionell gewordene „Methode Pestalozzi"\n• <strong>Yverdon (1804–1825)</strong>: Meine berühmteste Institution, die Besucher aus ganz Europa anzog\n\nIn Stans schlief ich mit den Kindern, pflegte Kranke, sang, arbeitete – das war <em>Beziehungspädagogik</em> avant la lettre.`,
+    "methode|elementarbildung|anschauung|abc":
+      `Meine <strong>Elementarmethode</strong> baut auf drei Grundelementen auf:\n\n• <strong>Zahl</strong>: Von konkreten Dingen zu abstrakten Zahlen – zuerst zählen mit Gegenständen\n• <strong>Form</strong>: Zeichnen, messen, geometrische Formen erfassen\n• <strong>Wort/Sprache</strong>: Vom Laut über das Wort zum Satz\n\nWichtig: Immer vom <strong>Nahen zum Fernen</strong>, vom <strong>Einfachen zum Zusammengesetzten</strong>, von der <strong>Anschauung zum Begriff</strong>. Nie umgekehrt! Das Ziel ist nicht das Auswendiglernen von Fakten, sondern das Verstehen von Zusammenhängen.`,
+    "armut|arme kinder|sozial|gesellschaft":
+      `Meine Pädagogik ist zutiefst <strong>sozial motiviert</strong>. Ich wuchs selbst ohne Vater auf, lernte die Armut kennen. Bildung war für mich das Mittel, um die Armutsspirale zu durchbrechen – nicht durch Almosen, sondern durch <em>Befähigung</em>. Das Kind soll lernen, sich selbst zu helfen. Dazu braucht es keine teure Schule, sondern eine <strong>liebende Beziehung</strong> und geordnete Erfahrungen. Das Haus der Mutter ist die erste und wichtigste Schule.`,
+    "rousseau|unterschied|vergleich":
+      `Rousseau war mein großes Vorbild – ich las seinen Émile und war ergriffen. Aber ich übersetzte seine Philosophie in <strong>praktische Arbeit</strong> mit echten armen Kindern. Rousseau beschrieb den idealen Erzieher im Landhaus; ich lebte mit Waisen in einem behelfsmäßigen Gebäude in Stans. Der Unterschied: Rousseau war Theoretiker, ich war Praktiker. Rousseau erzieh ein Kind der Natur; ich wollte die <em>Masse</em> armer Kinder erreichen.`,
+    "fröbel|einfluss|wirkung":
+      `Fröbel war von 1808 bis 1810 mein Schüler in Yverdon – diese Zeit hat ihn geprägt. Er übernahm mein Grundprinzip der Anschauung und die Überzeugung, dass Bildung ganzheitlich sein muss. Doch er entwickelte daraus eine systematische <strong>Spielpädagogik</strong> speziell für die frühe Kindheit und erfand den Kindergarten als eigene Institution. Ohne mich kein Fröbel – ohne Fröbel kein Kindergarten in seiner modernen Form.`,
+    "mutter|familie|eltern|häuslich":
+      `Ich glaube, dass die wichtigste Bildungsstätte das <strong>Elternhaus</strong> ist. In meinem Werk <em>Wie Gertrud ihre Kinder lehrt</em> (1801) und <em>Lienhard und Gertrud</em> zeige ich, wie eine einfache Frau durch Liebe, Geduld und weise Erziehung mehr bewirken kann als jede gelehrte Schule. Die Mutter-Kind-Bindung ist die Urform aller Bildungsbeziehungen. <div class="quote-block">„Die erste Erzieherin des Kindes ist die Mutter."</div>`
+  }
+},
+
+// ── 4. FRÖBEL ────────────────────────────────────────────────
+{
+  id:"froebel",
+  name:"Friedrich Fröbel",
+  years:"1782–1852",
+  era:"Romantik · Idealismus · Frühindustrialisierung",
+  tagline:"Der Erfinder des Kindergartens – Spiel als ernste Arbeit des Kindes",
+  image:"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Friedrich_Fr%C3%B6bel.jpg/440px-Friedrich_Fr%C3%B6bel.jpg",
+  color:"#3a6644",
+  greeting:`Willkommen, liebe Freundin der Kindheit! Ich, Friedrich Fröbel, habe 1840 in Bad Blankenburg das erste Haus gegründet, das ich <em>Kindergarten</em> nannte – einen Garten für Kinder, in dem sie wie Pflanzen wachsen dürfen, gepflegt von liebevollen Gärtnerinnen. <div class="quote-block">„Kommt, lasst uns unsern Kindern leben!"</div> Meine Pädagogik wurzelt in der Überzeugung, dass das Spiel die höchste Tätigkeit des Kindes ist. Was möchtest du wissen?`,
+  suggestions:["Was ist der Kindergarten – deine Erfindung?","Was sind die Spielgaben?","Spielpädagogik – warum ist Spiel so wichtig?","Was ist das 'sphärische Gesetz'?","Welche Rolle spielt die Erzieherin?","Wie beeinflusste dich Pestalozzi?"],
+  knowledge:{
+    "kindergarten|erfindung|gründung|bad blankenburg":
+      `<strong>1840</strong> gründete ich in Bad Blankenburg den ersten <em>Kindergarten</em> der Geschichte. Der Name war Programm: Ein <strong>Garten für Kinder</strong>, kein Aufbewahrungsort. Kinder sollten wie Pflanzen in einem Garten wachsen – jede auf ihre Art, begleitet von liebenden Erzieherinnen als Gärtnerinnen.\n\nVorher gab es nur sogenannte <em>Kleinkinderbewahranstalten</em>, die reine Beaufsichtigung boten. Ich schuf eine pädagogische Institution mit eigenem Programm: Spielgaben, Bewegungslieder, Gartenarbeit, Kreistänze.\n\n<div class="quote-block">„Kommt, lasst uns unsern Kindern leben!"</div>\n\nBeachtenswert: Preußen verbot den Kindergarten 1851 wegen angeblich atheistischer und demokratischer Tendenzen – erst nach meinem Tod 1852 wurde das Verbot aufgehoben.`,
+    "spielgaben|spielmaterial|gabe|ball würfel":
+      `Meine <strong>Spielgaben</strong> sind ein systematisches, aufeinander aufbauendes Materialsystem – entwickelt aus Beobachtungen und meiner Philosophie:\n\n• <strong>1. Gabe: Der Ball</strong> – weiches Wollknäuel, Symbol der Einheit und des Kreises (göttliches Prinzip)\n• <strong>2. Gabe: Kugel, Würfel, Zylinder</strong> – Gegensätze und Vermittlung\n• <strong>3.–6. Gabe: Bauklötze</strong> – systematische Zerlegung und Zusammensetzung\n• <strong>Weitere Gaben</strong>: Flechten, Falten, Schneiden, Legen von Stäben, Nähen\n\nDie Gaben werden nie isoliert eingesetzt, sondern <strong>verbunden mit Liedern, Geschichten und Gesten</strong>. Sie wenden sich gleichzeitig an Motorik, Kognition und Emotionen – <em>Kopf, Herz und Hand</em> (hier schließe ich an Pestalozzi an).`,
+    "spiel|spielpädagogik|spieltheorie|bedeutung":
+      `Das Spiel ist für mich keine bloße Freizeitbeschäftigung – es ist die <strong>ernste Arbeit des Kindes</strong>:\n\n<div class="quote-block">„Das Spiel des Kindes ist nicht Spielerei; es hat hohen Ernst und tiefe Bedeutung."</div>\n\nIm Spiel:\n• Lernt das Kind die Welt kennen und strukturiert sie\n• Drückt es sein Inneres aus (<em>Inneres äußerlich machen</em>)\n• Entwickelt es Kreativität, Konzentration und soziale Fähigkeiten\n• Erlebt es die Gesetzmäßigkeiten der Wirklichkeit\n\nDie Methode muss dem Entwicklungsstand folgen – <strong>nachgehend, nicht vorschreibend</strong>. Der Erwachsene begleitet das Spiel, er erzwingt es nicht.`,
+    "sphärisch|gesetz|philosophie|einheit|gott":
+      `Das <strong>sphärische Gesetz</strong> ist der philosophische Kern meiner Pädagogik (erstmals 1811 formuliert). Es besagt: In allem liegt ein ewiges Gesetz göttlichen Ursprungs. Die Kugel (griech. <em>sphaira</em>) symbolisiert die vollkommene Einheit.\n\nPraktisch: Äußerliches und Inneres müssen in Einklang gebracht werden. Das Kind soll sein Inneres <em>äußerlich machen</em> – im Spiel, im Lied, im Bauen. Und Äußeres <em>innerlich</em> – es wirklich verstehen und verinnerlichen.\n\nMeine Pädagogik hat also eine tiefe <strong>religiös-philosophische Dimension</strong>: Bildung als Weg zur Einigung mit Gott und der Natur.`,
+    "erzieherin|rolle|gärtnerin|fachkraft":
+      `Die Erzieherin ist für mich die <strong>Gärtnerin</strong> – sie pflegt, aber erzwingt nicht. Ihre Aufgaben:\n\n1. <strong>Beobachten</strong>: Wo steht das Kind in seiner Entwicklung?\n2. <strong>Begleiten</strong>: Die richtigen Spielgaben zur richtigen Zeit anbieten\n3. <strong>Verbinden</strong>: Spiel mit Wort, Lied und Geste verknüpfen\n4. <strong>Vorbildsein</strong>: Durch eigenes tätiges Tun zeigen\n\nDie Spielgaben werden in <strong>enger Wechselwirkung zwischen Erzieherin und Kind</strong> eingesetzt – kein isoliertes Basteln! Die Erzieherin singt dazu, erklärt, fragt.\n\nWichtig: Fröbel vertraute Frauen diese Aufgabe an – er bildete die ersten <em>Kindergärtnerinnen</em> aus, was für 1840 fortschrittlich war.`,
+    "pestalozzi|einfluss|yverdon|schüler":
+      `Ich war 1808–1810 Pestalozzis Schüler in Yverdon und wurde tief geprägt. Von ihm übernahm ich:\n• Das Prinzip der Anschauung\n• Die Überzeugung der Ganzheitlichkeit (Kopf-Herz-Hand)\n• Den Respekt vor der kindlichen Eigenaktivität\n\nDoch ich ging weiter: Pestalozzi lehrte <em>Schulkinder</em>; ich wandte mich den <strong>Kleinkindern</strong> zu. Pestalozzi hatte keine eigene Materialtheorie; ich entwickelte das System der <strong>Spielgaben</strong>. Und ich erfand mit dem Kindergarten eine neue Institution.`,
+    "reformpädagogik|wirkung|rezeption|heute":
+      `Meine Pädagogik wurde nach der Jahrhundertwende wiederentdeckt – die sogenannte <strong>Fröbelrenaissance</strong> (1900–1930er Jahre) in der Reformpädagogischen Bewegung. Meine Spielideen beeinflussten Montessori (obwohl sie mir vorwarf, zu wenig spontanes Spiel zu fördern) und den deutschen Kindergarten bis heute.\n\nIn der <strong>DDR</strong> diente meine Pädagogik zur Legitimation staatlicher Kindergärten. Im <strong>Nationalsozialismus</strong> wurde sie für Disziplinierungszwecke missbraucht – ein trauriges Kapitel. In der <strong>BRD der 1970er</strong> kritisierte man die unzureichende Berücksichtigung des sozialen Umfelds und entwickelte den Situationsansatz.`
+  }
+},
+
+// ── 5. MONTESSORI ────────────────────────────────────────────
+{
+  id:"montessori",
+  name:"Maria Montessori",
+  years:"1870–1952",
+  era:"Reformpädagogik · Früh-20. Jh. · Frauenbewegung",
+  tagline:"Hilf mir, es selbst zu tun – die Pädagogik der Selbsttätigkeit",
+  image:"https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Maria_Montessori_%28Nobel%29.jpg/440px-Maria_Montessori_%28Nobel%29.jpg",
+  color:"#8b2a2a",
+  greeting:`Guten Tag! Ich bin Maria Montessori – Ärztin, Wissenschaftlerin und Pädagogin. Als erste Frau Italiens, die Medizin studierte, begann ich meine Arbeit mit behinderten Kindern und erkannte: Kinder wollen lernen. Man muss sie nur lassen. <div class="quote-block">„Hilf mir, es selbst zu tun."</div> Was möchtest du erfahren?`,
+  suggestions:["Was ist deine Biografie – erste Ärztin Italiens?","Was sind sensitive Phasen?","Was ist die vorbereitete Umgebung?","Was ist Freiarbeit?","Was bedeutet Polarisation der Aufmerksamkeit?","Welche Materialien entwickeltest du?","Welche Rolle hat die Erzieherin?"],
+  knowledge:{
+    "biografie|leben|ärztin|studium|geschichte":
+      `Meine Biografie, entnommen aus dem Unterrichtsmaterial deines Kurses:\n\n<em>„Nach dem Abitur studiert Maria Montessori als erste Frau in Italien Medizin und wird 1896 die erste Ärztin in ihrem Land. Sie arbeitet als Assistenzärztin an der Psychiatrischen Universitätsklinik und kommt dort mit behinderten Kindern in Kontakt. Schnell bemerkt sie, dass diese Kinder einer pädagogischen Betreuung und Förderung bedürfen."</em>\n\n<div class="quote-block">„Ich begann, Kinder zu beobachten statt sie zu unterrichten." – Maria Montessori</div>\n\nNach Erfolgen mit behinderten Kindern eröffnete sie 1907 das erste <strong>Casa dei Bambini</strong> (Kinderhaus) in Rom für Arbeiterkinder. Später lebte sie in Barcelona (1916), Holland, und wanderte während des 2. Weltkriegs nach Indien aus. 1946 kehrte sie nach Holland zurück, wo sie 1952 starb.`,
+    "sensitive phasen|sensible|entwicklung|innerer bauplan":
+      `<strong>Sensitive Phasen</strong> (dt. auch: sensible Phasen) sind Zeitfenster besonderer Empfänglichkeit für den Erwerb bestimmter Fähigkeiten:\n\n• <strong>Sprache (0–6 J.)</strong>: Das Kind saugt Sprache auf wie ein Schwamm\n• <strong>Ordnung (1–3 J.)</strong>: Starkes Bedürfnis nach Konstanz und Struktur\n• <strong>Bewegung (1–4 J.)</strong>: Verfeinerung der Motorik\n• <strong>Kleine Objekte (1,5–2,5 J.)</strong>: Faszination für Kleinigkeiten\n• <strong>Soziales Verhalten (2,5–6 J.)</strong>: Regeln, Rollen, Gemeinschaft\n• <strong>Lesen/Schreiben (3–6 J.)</strong>: Natürliches Interesse\n\nIn diesen Phasen ist Lernen fast mühelos. <strong>Wird eine sensitive Phase verpasst</strong>, kann die entsprechende Fähigkeit später nur mit großer Anstrengung erworben werden. Die Erzieherin muss diese Phasen <strong>beobachten und respektieren</strong>.`,
+    "vorbereitete umgebung|raum|material|ambiente":
+      `Die <strong>vorbereitete Umgebung</strong> ist das entscheidende Prinzip meiner Pädagogik – das Ergebnis meiner jahrelangen Beobachtungen:\n\nDer Raum muss so gestaltet sein, dass er:\n• <strong>Aufforderungscharakter</strong> hat – das Material „ruft" das Kind\n• <strong>Kindgerecht</strong> ist – niedrige Regale, kleine Möbel, alles erreichbar\n• <strong>Ästhetisch</strong> ist – Schönheit fördert Konzentration\n• <strong>Geordnet</strong> ist – jedes Material hat seinen festen Platz\n• <strong>Selbstkontrolle</strong> ermöglicht – das Material zeigt dem Kind selbst, ob es richtig liegt\n\nDie Erzieherin bereitet diesen Raum vor und hält sich dann zurück. Der Raum <em>erzieht</em> mit.`,
+    "freiarbeit|freie wahl|selbstständig|autonomie":
+      `<strong>Freiarbeit</strong> bedeutet: Das Kind entscheidet selbst, womit es sich beschäftigt – aus dem bereitgestellten Material. Es wählt den Zeitpunkt, den Platz, das Tempo und die Dauer.\n\nWarum ist das pädagogisch sinnvoll?\n• Das Kind folgt seiner <em>sensitiven Phase</em> – es ist dann bereit\n• <strong>Intrinsische Motivation</strong> (= aus inneren Antrieb) wird gestärkt\n• Das Kind erlebt Selbstwirksamkeit\n• Tiefe Konzentration (Polarisation der Aufmerksamkeit) wird ermöglicht\n\nDie Freiarbeit zieht sich durch alle Altersstufen der Montessori-Pädagogik. Sie ist kein Chaos, sondern <strong>geordnete Freiheit</strong> – innerhalb klarer Regeln.`,
+    "polarisation|aufmerksamkeit|konzentration|vertiefung":
+      `Die <strong>Polarisation der Aufmerksamkeit</strong> ist nach meiner Überzeugung der bedeutendste Faktor der kindlichen Entwicklung:\n\nMontessori-Materialien aus deinem Unterrichtsmaterial: <em>„Die Kinder sollen die Möglichkeit bekommen, sich ganz auf ihr Tun einzulassen, wodurch es zu einer Polarisation der Aufmerksamkeit kommt. Diese meint die Fähigkeit der tiefen Konzentration während der Beschäftigung mit einem selbst gewählten Gegenstand."</em>\n\nDurch diese tiefe Versenkung entsteht <strong>Stille</strong> – nicht erzwungene Stille, sondern innere Sammlung. Das Kind geht aus einer solchen Arbeit <em>zufrieden und gestärkt</em> hervor.\n\n<div class="quote-block">„Stille ist das Finden der inneren Mitte."</div>`,
+    "material|materialien|bereiche|sinnesmaterial":
+      `Das Montessori-Material ist in <strong>fünf Bereiche</strong> unterteilt (aus deinem Unterrichtsmaterial):\n\n1. <strong>Material des täglichen Lebens</strong>: Tische decken, Knöpfe schließen, gießen – Alltagshandlungen als Lernmaterial\n2. <strong>Sinnesmaterial</strong>: Zylinderblöcke, Farbtafeln, Geräuschdosen – Schulung der Sinneswahrnehmung\n3. <strong>Sprachmaterial</strong>: Sandpapierbuchstaben, bewegliches Alphabet\n4. <strong>Mathematisches Material</strong>: Perlenmaterial, Goldenes Perlenmaterial, Spindle Box\n5. <strong>Kosmisches Material</strong>: Globus, Zeitlinien, Tierkarten – das Weltbild\n\nJedes Material folgt dem Prinzip der <strong>Isolierung der Eigenschaft</strong>: Es lehrt genau eine Sache, damit das Kind sich voll darauf konzentrieren kann.`,
+    "erzieherin|rolle|fachkraft|zurückhaltung|beobachtung":
+      `Aus dem Unterrichtsmaterial deines Kurses:\n\n<em>„Die Rolle der päd. Fachkraft zeichnet sich durch Zurückhaltung aus. Sie tragen dafür Sorge, dass das Kind eine anregungsreiche Umgebung vorfindet, Zeit und Raum hat, um sich auszuprobieren und sich frei zu entwickeln. Die pädagogischen Fachkräfte beobachten einfühlsam und erkennen dadurch genau, an welchem Entwicklungspunkt das Kind ist."</em>\n\nDie Erzieherin hat also eine <strong>Zusatzausbildung</strong>, die theoretische und praktische Inhalte umfasst. Sie ist nicht die Lehrerin im klassischen Sinne, sondern:\n• Gestalterin der vorbereiteten Umgebung\n• Beobachterin der Entwicklung\n• Zurückhaltende Begleiterin\n• Person, die dem Kind <em>zeigt</em>, wie ein Material benutzt wird (Lektion)\n\n<div class="quote-block">„Das Kind steht im Mittelpunkt. Die pädagogische Fachkraft begleitet geduldig."</div>`,
+    "vergleich fröbel|fröbel|unterschied|diskussion":
+      `Die <strong>Fröbel-Montessori-Diskussion</strong> ist historisch bedeutsam (aus deinem Unterrichtsmaterial): Meiner Pädagogik wurde vorgeworfen:\n• Eine zu <strong>positivistische Haltung</strong> (zu wissenschaftlich-kalt)\n• Eine unzureichende Berücksichtigung des <strong>spontanen Spiels</strong>\n\nFröbels Stärke ist das freie, symbolische Spiel; meine Stärke liegt im <strong>strukturierten Selbstlernen</strong> mit didaktischem Material.\n\nBeide Ansätze haben heute ihren Platz in der Kitapädagogik. Viele Einrichtungen kombinieren Elemente von beiden.`
+  }
+},
+
+// ── 6. STEINER (WALDORF) ─────────────────────────────────────
+{
+  id:"steiner",
+  name:"Rudolf Steiner",
+  years:"1861–1925",
+  era:"Jahrhundertwende · Anthroposophie · Reformpädagogik",
+  tagline:"Das Kind in Ehrfurcht aufnehmen – in Liebe erziehen – in Freiheit entlassen",
+  image:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Rudolf_Steiner_1905.jpg/440px-Rudolf_Steiner_1905.jpg",
+  color:"#4a3d8a",
+  greeting:`Guten Tag. Ich bin Rudolf Steiner, Begründer der Anthroposophie und der Waldorfpädagogik. 1919 gründete ich gemeinsam mit Emil Molt in Stuttgart die erste Waldorfschule für Arbeiterkinder – in den Räumen der Waldorf-Astoria-Zigarettenfabrik. <div class="quote-block">„Das Kind in Ehrfurcht aufnehmen, in Liebe erziehen, in Freiheit entlassen."</div> Was möchtest du wissen?`,
+  suggestions:["Was ist Anthroposophie?","Drei Grundsätze: Ehrfurcht, Liebe, Freiheit","Wie lernen Kinder durch Nachahmung?","Was sind die Septennia (7-Jahres-Rhythmen)?","Welche Rolle hat die Erzieherin/der Lehrer?","Welche Materialien und Methoden gibt es?","Was bedeutet Eurhythmie?"],
+  knowledge:{
+    "anthroposophie|geistesw|philosophy|körper seele geist":
+      `<strong>Anthroposophie</strong> (griech.: Menschenweisheit) ist die von mir entwickelte Weltanschauung, die Grundlage der Waldorfpädagogik:\n\nAus dem Unterrichtsmaterial: <em>„Grundlage der Waldorfpädagogik ist die von Steiner entwickelte sogenannte Anthroposophie. In ihr spielt neben der Pädagogik der religiöse Aspekt eine große Rolle."</em>\n\nNach meiner Überzeugung besteht der Mensch aus drei Teilen:\n• <strong>Körper</strong> (physische Welt)\n• <strong>Seele</strong> (seelische Welt – Fühlen, Wollen)\n• <strong>Geist</strong> (geistige Welt – unvergängliches Wesen)\n\n<em>„Nach Steiner steht der Mensch in der Gefahr, in den Materialismus zu verfallen."</em> Der pädagogische Auftrag muss allen drei Aspekten gerecht werden.`,
+    "drei grundsätze|ehrfurcht|liebe|freiheit":
+      `Aus dem Unterrichtsmaterial deines Kurses:\n\n<em>„Um zu einer individuellen, frei entfalteten Persönlichkeit heranwachsen zu können, brauchen Kinder Fachkräfte mit dem Bewusstsein und der inneren Überzeugung für die folgenden drei Grundsätze der Waldorfpädagogik:"</em>\n\n<div class="quote-block">• Das Kind in <strong>Ehrfurcht</strong> aufnehmen<br>• In <strong>Liebe</strong> erziehen<br>• In <strong>Freiheit</strong> entlassen</div>\n\nDiese drei Sätze sind kein Programm – sie sind eine <strong>innere Haltung</strong> der Erzieherin. Ehrfurcht vor der Individualität des Kindes, Liebe als Grundlage jeder Beziehung, Freiheit als das Ziel aller Erziehung.`,
+    "nachahmung|lernen|vorbild|imitation":
+      `Ein zentrales Konzept meiner Frühpädagogik:\n\nAus dem Unterrichtsmaterial: <em>„Der Mensch ist in der Waldorfpädagogik ein fortwährend lernendes Wesen. Kinder lernen in den ersten Lebensjahren durch Nachahmung, weswegen sie Erwachsene brauchen, die in ihrem Tun und ihrem Verhalten vorbildhaft sind."</em>\n\nDaraus folgt die <strong>Rolle der Erzieherin</strong>: Sie ist kein Unterrichtender, sondern ein Vorbild. Alles, was sie tut – wie sie spricht, wie sie sich bewegt, wie sie mit anderen umgeht – wird vom Kind unbewusst aufgesogen und nachgeahmt.\n\n<div class="quote-block">„Das Kind ahmt nach, nicht weil es soll, sondern weil es nicht anders kann."</div>`,
+    "septennia|sieben jahre|entwicklungsphasen|rhythmus":
+      `Ich beschreibe die Entwicklung in <strong>7-Jahres-Rhythmen (Septennia)</strong>:\n\n• <strong>1. Septennium (0–7 J.)</strong>: Das Kind lebt in völliger Hingabe an die Sinneswelt. Lernen durch Nachahmung, nicht durch Belehrung. Das Zahnen signalisiert das Ende.\n• <strong>2. Septennium (7–14 J.)</strong>: Mit dem Zahnwechsel erwacht das Fühlen. Lernen durch Autorität und Rhythmus. Die Klassenlehrerin begleitet 8 Jahre lang.\n• <strong>3. Septennium (14–21 J.)</strong>: Mit der Pubertät erwacht das selbstständige Denken und Urteilen.\n\nJede Phase hat eigene pädagogische Konsequenzen: Im 1. Septennium keine Wissensvermittlung, sondern Nachahmen lassen. Im 2. keine Appelle an den Verstand, sondern Bilder und Künstlerisches.`,
+    "erzieherin|lehrer|rolle|beziehung|kontinuität":
+      `Aus dem Unterrichtsmaterial: <em>„Die Rolle der pädagogischen Fachkraft besteht darin, dem Kind durch tätiges Handeln und moralisches Verhalten Vorbild zu sein. Der Beziehung zwischen Fachkraft und Kind kommt eine besondere Rolle zu. Deswegen ist ein Wechsel der Pädagogen auch zu vermeiden. In Waldorfschulen haben Kinder in der Regel von Klasse eins bis acht den gleichen Klassenlehrer."</em>\n\nDie <strong>Kontinuität der Beziehung</strong> ist ein Kernprinzip. Das Kind braucht stabile, verlässliche Bezugspersonen – nicht jährlichen Lehrerwechsel.`,
+    "material|naturmaterial|spielzeug|ästhetik":
+      `Aus dem Unterrichtsmaterial: <em>„Spielsachen und Materialien in der Waldorfpädagogik bestehen meistens aus Naturmaterialien, z.B. aus Holz, und sind in pastelligen Tönen gehalten. Diese Naturmaterialien sollen besonders die Fantasie und Kreativität der Kinder anregen."</em>\n\nDer Grund ist meine Überzeugung: Fertiges Plastikspielzeug schließt die Fantasie. Ein unförmiges Stück Holz kann alles sein – ein Auto, ein Pferd, ein Haus. Die <strong>unfertige Form</strong> fordert die Phantasie heraus.\n\nAußerdem: keine scharfen Kontraste, keine grellen Farben – sanfte Pastelltöne beruhigen und fördern innere Sammlung.`,
+    "eurhythmie|kunst|musik|jahresfeste|rhythmus":
+      `Aus dem Unterrichtsmaterial: <em>„Die Kunst spielt in der Waldorfpädagogik eine große Rolle, da ihr nach dem Verständnis Steiners eine besondere schöpferische Kraft zugrunde liegt."</em>\n\n<strong>Eurhythmie</strong> ist eine von mir entwickelte Bewegungskunst, die Sprache und Musik in Körperbewegungen übersetzt – sowohl als Kunstform als auch therapeutisch angewendet.\n\nWichtig sind auch die <strong>Jahresfeste</strong>: <em>„Die Orientierung an den Jahreszeiten und ihren Festen hilft dem Kind, die Welt zu begreifen und sich in ihr Zuhause zu fühlen."</em> Michaeli, Advent, Ostern, Pfingsten – der Jahresrhythmus gibt Sicherheit.`,
+    "erste schule|stuttgart|arbeiter|gründung|molt":
+      `Die erste Waldorfschule entstand unter besonderen Umständen:\n\nAus dem Unterrichtsmaterial: <em>„Die Waldorfpädagogik geht zurück auf Rudolf Steiner (1861–1925), der gemeinsam mit Emil Molt 1919 für Arbeiterkinder in Stuttgart die erste Waldorfschule gründete. Benannt wurde sie nach dem Gebäude, in dem sie untergebracht war, der Waldorf Astoria Zigarettenfabrik."</em>\n\nDas Ziel: <em>„Unabhängig von sozialem, kulturellem und gesellschaftlichem Hintergrund Kindern Zugang zu Bildung zu ermöglichen."</em>\n\nDas war 1919, unmittelbar nach dem 1. Weltkrieg, in einer Zeit sozialer Umbrüche – ein emanzipatorisches Projekt.`
+  }
+},
+
+// ── 7. DEWEY ─────────────────────────────────────────────────
+{
+  id:"dewey",
+  name:"John Dewey",
+  years:"1859–1952",
+  era:"Pragmatismus · USA · Progressive Education",
+  tagline:"Learning by Doing – Bildung ist das Leben selbst",
+  image:"https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/John_Dewey_in_1902.jpg/440px-John_Dewey_in_1902.jpg",
+  color:"#1a5276",
+  greeting:`Hello! I'm John Dewey – but let me speak German for you. Als amerikanischer Philosoph und Pädagoge habe ich die Schule als demokratische Gemeinschaft begriffen. <div class="quote-block">„Bildung ist nicht Vorbereitung auf das Leben – Bildung ist das Leben selbst."</div> Meine Ideen beeinflussten die Reformpädagogik weltweit. Was möchtest du wissen?`,
+  suggestions:["Was bedeutet 'Learning by Doing'?","Schule als demokratische Gemeinschaft?","Was ist Projektmethode?","Philosophie: Was ist Pragmatismus?","Welchen Einfluss hattest du auf Europa?","Erfahrungsbasiertes Lernen – wie funktioniert das?"],
+  knowledge:{
+    "learning by doing|erfahrung|handeln|praxis":
+      `<strong>Learning by Doing</strong> ist mein bekanntestes Prinzip – aber es wird oft missverstanden. Es bedeutet nicht: einfach irgendwas tun. Es bedeutet:\n\n1. Das Kind macht eine <strong>Erfahrung</strong> (doing)\n2. Es <strong>reflektiert</strong> diese Erfahrung\n3. Es entwickelt daraus ein <strong>Konzept</strong>\n4. Es <strong>erprobt</strong> das Konzept in neuen Situationen\n\n<div class="quote-block">„Wir lernen nicht aus Erfahrungen – wir lernen durch das Nachdenken über Erfahrungen."</div>\n\nDer <strong>Erfahrungskreislauf</strong> (experience cycle) ist das Herzstück meiner Pädagogik. Anwendung in der Kita: Kochen, Bauen, Pflanzen – nicht als Beschäftigung, sondern als strukturierter Lernprozess mit Reflexion.`,
+    "demokratie|demokratisch|gemeinschaft|gesellschaft":
+      `Mein zentrales pädagogisches Werk heißt <strong>„Demokratie und Erziehung"</strong> (1916). Meine These: Die Schule ist eine <em>Gesellschaft im Kleinen</em> – sie muss demokratisch organisiert sein, damit Kinder demokratisches Handeln lernen.\n\n<div class="quote-block">„Demokratie ist mehr als eine Regierungsform; sie ist eine Form des gemeinsamen Lebens."</div>\n\nPraktisch: Kinder sollen mitbestimmen, Regeln gemeinsam aushandeln, Verantwortung übernehmen. Die Erzieherin ist nicht die Autorität von oben, sondern eine erfahrene Mitglied der Lerngemeinschaft. Dieses Denken beeinflusste den deutschen <strong>Situationsansatz</strong> stark.`,
+    "projektmethode|projekt|method|problem":
+      `Die <strong>Projektmethode</strong> geht auf mich und meinen Schüler William Heard Kilpatrick zurück. Merkmale:\n\n• <strong>Ausgangspunkt</strong>: Ein echtes Problem oder eine echte Frage aus der Lebenswelt\n• <strong>Planung</strong>: Kinder planen gemeinsam den Weg\n• <strong>Durchführung</strong>: Handelnde, forschende Arbeit\n• <strong>Produkt/Ergebnis</strong>: Etwas Reales entsteht (Ausstellung, Theaterstück, Garten…)\n• <strong>Reflexion</strong>: Gemeinsame Auswertung\n\nIn der Kita: Das Kind bringt eine Frage mit (z.B. „Warum schmelzen Schneeflocken?"). Daraus entsteht ein ganzes Forschungsprojekt. Das entspricht dem Grundprinzip des deutschen <strong>Ko-Konstruktions-Modells</strong>.`,
+    "pragmatismus|philosophie|wahrheit|nützlich":
+      `Der <strong>Pragmatismus</strong> ist die amerikanische Philosophie, die ich maßgeblich entwickelte. Kerngedanke:\n\nWahrheit ist nicht etwas Absolutes, das entdeckt wird – Wahrheit ist das, <strong>was sich in der Praxis bewährt</strong>. Eine Idee ist wahr, wenn sie hilfreich ist, wenn sie funktioniert.\n\nFür die Pädagogik bedeutet das: Wissen ist kein Selbstzweck. Wissen ist wertvoll, wenn es hilft, Probleme zu lösen und an der Gesellschaft teilzuhaben. Lernen muss deshalb <strong>immer mit Handeln verbunden</strong> sein.`,
+    "einfluss europa|reformpädagogik|deutschland":
+      `Mein Einfluss auf Europa war enorm, obwohl ich nie dort lebte:\n\n• Die <strong>Reformpädagogische Bewegung</strong> (Gaudig, Kerschensteiner in Deutschland) übernahm viele meiner Ideen\n• Der <strong>Situationsansatz</strong> in deutschen Kindergärten (Jürgen Zimmer, 1970er) ist stark von meinem demokratischen Erziehungsverständnis geprägt\n• <strong>Reggio-Pädagogik</strong>: Malaguzzi kannte meine Arbeiten\n• Moderne Konzepte wie <strong>Ko-Konstruktion</strong> und <strong>Projektarbeit in der Kita</strong> gehen auf meine Grundideen zurück`,
+    "erfahrungslernen|kontinuität|wachstum|curriculum":
+      `Zwei Prinzipien sind zentral für mein Erziehungsverständnis:\n\n1. <strong>Kontinuität der Erfahrung</strong>: Jede Erfahrung verändert den Menschen und beeinflusst künftige Erfahrungen. Erziehung ist ein fortwährendes Wachstum – kein Ziel, das man erreicht.\n\n2. <strong>Interaktion</strong>: Lernen geschieht immer in der Wechselwirkung zwischen dem Kind und seiner Umwelt. Kein Kind lernt allein – es lernt durch Beziehungen, Handlungen, Austausch.\n\n<div class="quote-block">„Das Ziel der Erziehung ist Wachstum selbst, nicht Vorbereitung auf etwas anderes."</div>`
+  }
+},
+
+// ── 8. MALAGUZZI (REGGIO) ────────────────────────────────────
+{
+  id:"malaguzzi",
+  name:"Loris Malaguzzi",
+  years:"1920–1994",
+  era:"Nachkriegszeit · Norditalien · Ko-Konstruktion",
+  tagline:"Das Kind hat hundert Sprachen – und man raubt ihm neunundneunzig",
+  image:"https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Loris_Malaguzzi.jpg/440px-Loris_Malaguzzi.jpg",
+  color:"#7b4ea0",
+  greeting:`Ciao a tutti! Ich bin Loris Malaguzzi aus Reggio Emilia in Norditalien. Nach dem 2. Weltkrieg haben Eltern und Kinder auf einem zerstörten Feld einen Kindergarten aus Steinen aufgebaut. Das hat mein Leben verändert. <div class="quote-block">„Das Kind hat hundert Sprachen, hundert Hände, hundert Gedanken, hundert Arten zu denken, zu spielen, zu sprechen."</div> Was möchtest du wissen?`,
+  suggestions:["Was sind die 'hundert Sprachen der Kinder'?","Was ist Ko-Konstruktion?","Welche Rolle spielt die Umgebung?","Wie entstanden die Reggio-Kindergärten?","Was ist die Dokumentation?","Wie unterscheidet sich Reggio von Montessori?"],
+  knowledge:{
+    "hundert sprachen|sprachen der kinder|ausdrucksformen|kreativität":
+      `Mein bekanntestes Gedicht beginnt so:\n\n<div class="quote-block">„Das Kind hat hundert Sprachen,<br>hundert Hände, hundert Gedanken,<br>hundert Arten zu denken, zu spielen, zu sprechen.<br>Hundert, immer hundert Arten zu zuhören,<br>zu staunen, zu lieben."</div>\n\nDas Gedicht endet: <em>„Man sagt ihm: dass Spielen und Arbeiten, Wirklichkeit und Phantasie, Wissenschaft und Imagination, Himmel und Erde, Vernunft und Traum Dinge sind, die nicht zusammengehören. Man sagt ihm also, dass es keine hundert gibt. Das Kind sagt: Doch."</em>\n\n<strong>Hundert Sprachen</strong> meint: Kinder drücken sich auf vielfältigste Weise aus – durch Malen, Bauen, Tanzen, Sprechen, Schweigen, Forschen. Jede dieser Sprachen ist gleichwertig.`,
+    "ko-konstruktion|gemeinsam|lernen|dialog|beziehung":
+      `<strong>Ko-Konstruktion</strong> ist das Herzstück der Reggio-Pädagogik:\n\nLernen ist kein einseitiger Prozess (Erwachsener → Kind), sondern ein <strong>gemeinsames Konstruieren von Wissen und Bedeutung</strong> im Dialog.\n\nDas bedeutet:\n• Das Kind ist <strong>kompetenter Akteur</strong>, nicht passiver Empfänger\n• Erzieherin und Kind forschen <em>gemeinsam</em>\n• Kinder lernen auch voneinander\n• Der Erzieher ist <em>Co-Konstrukteur</em>, kein Wissensvermittler\n\nDieser Begriff hat die deutsche Frühpädagogik durch das <strong>Bildungsprogramm der deutschen Bundesländer</strong> (ab 2000er) stark beeinflusst.`,
+    "umgebung|raum|dritter erzieher|atelier":
+      `In Reggio gilt: <strong>Die Umgebung ist der dritte Erzieher</strong> (neben dem Erzieher-Team und den Kindern).\n\nDas bedeutet:\n• Der Raum wird mit größter Sorgfalt gestaltet\n• Es gibt ein <strong>Atelier</strong> – ein Kunstatelier als zentraler Ort\n• Materialien sind offen, sichtbar, einladend\n• Kindliche Werke werden <strong>dokumentiert und ausgestellt</strong>\n• Die Ästhetik des Raumes sendet Botschaften: „Ihr seid hier willkommen, ihr seid kompetent"\n\nDer Unterschied zur vorbereiteten Umgebung bei Montessori: Reggio ist weniger strukturiert – die Umgebung reagiert auf die aktuellen Forschungsthemen der Kinder.`,
+    "dokumentation|portfolio|sichtbar machen|beobachtung":
+      `<strong>Dokumentation</strong> ist in Reggio nicht bloß Protokoll – sie ist pädagogisches Instrument:\n\n• Fotos, Videos, Zeichnungen, Texte dokumentieren den <strong>Lernprozess</strong> der Kinder\n• Sie machen das Denken der Kinder <strong>sichtbar</strong> – für andere Kinder, Eltern, die Erzieherin selbst\n• Sie ermöglicht <strong>Reflexion</strong>: Was hat das Kind gedacht? Was hat es gelernt?\n• Sie ist Gesprächsgrundlage für <strong>Elterngespräche</strong>\n\nIn Deutschland hat dieses Konzept die Entwicklung von <strong>Portfolios und Bildungsdokumentationen</strong> beeinflusst.`,
+    "entstehung|reggio emilia|nachkrieg|geschichte":
+      `Die Entstehungsgeschichte ist bemerkenswert:\n\n1945, kurz nach Kriegsende, begannen Eltern und Dorfgemeinschaft in Reggio Emilia (Norditalien) auf einem Feld aus Trümmern einen Kindergarten zu bauen – buchstäblich aus den Steinen zerbombter Gebäude. Ein Soldat hatte ein Pferd hinterlassen, das verkauft wurde, um Steine zu kaufen.\n\nIch, damals junger Pädagoge, war tief bewegt. Aus dieser Gemeinschaftsbewegung entstanden kommunale Kindergärten, die ich als pädagogischer Leiter (ab 1963) zu einer weltbekannten Konzeption entwickelte.\n\nReggio ist also ein <strong>demokratisches, emanzipatorisches Projekt</strong> – geboren aus dem Willen, eine bessere Welt aufzubauen.`,
+    "vergleich montessori|montessori|unterschied|vergleich":
+      `Interessante Frage! Beide Ansätze respektieren das Kind als aktives Subjekt:\n\n| Aspekt | Montessori | Reggio |  \n|---|---|---|\n| Material | Strukturiert, definiert | Offen, provokativ |\n| Lernweg | Individuelle Freiarbeit | Ko-konstruktives Forschen |\n| Rolle Erzieherin | Zurückhaltend, vorbereitend | Aktive Co-Forscherin |\n| Dokumentation | Beobachtung | Sichtbarmachen des Denkens |\n| Themen | Kindlich gewählt | Emergent aus Kindinteressen |\n\nBeide betonen <strong>Kindkompetenz und Umgebung</strong>. Reggio ist offener, weniger strukturiert – Montessori klarer im Materialsystem.`
+  }
+}
+]; // Ende PEDAGOGUES Array
+
+// ═══════════════════════════════════════════════════════════════
+//  CHAT ENGINE
+// ═══════════════════════════════════════════════════════════════
+
+let currentPed = null;
+let isTyping = false;
+
+function findResponse(ped, input) {
+  const lower = input.toLowerCase().replace(/[äöüÄÖÜß]/g, c => ({ä:'ae',ö:'oe',ü:'ue',Ä:'ae',Ö:'oe',Ü:'ue',ß:'ss'}[c]||c));
+  
+  for (const [pattern, response] of Object.entries(ped.knowledge)) {
+    const keys = pattern.split('|');
+    if (keys.some(k => lower.includes(k))) {
+      return response;
+    }
+  }
+
+  // Fallback-Antworten die zur Persönlichkeit passen
+  const fallbacks = {
+    comenius: `Eine interessante Frage! Als Didaktiker würde ich sagen: Jede Frage ist der Beginn des Lernens. Meine Wissensgebiete sind vor allem meine Didactica Magna, das Anschauungsprinzip, der Orbis Pictus und die Stufentheorie der Bildung. Frage mich gerne zu einem dieser Themen!`,
+    rousseau: `Hm – diese Frage führt mich in unbekanntes Terrain. Aber ich bin überzeugt: Wenn du sie aus deiner eigenen Erfahrung heraus stellst, wirst du die Antwort selbst finden – das ist mein Grundprinzip der negativen Erziehung. Frage mich gerne nach Émile, der Naturerziehung oder meiner Entwicklungstheorie!`,
+    pestalozzi: `Diese Frage habe ich nicht in meinen Schriften behandelt. Aber ich sage dir: Aus der <em>Praxis</em> mit echten Kindern lernt man mehr als aus Büchern. Frag mich nach Kopf-Herz-Hand, meinen Waisenhäusern oder meiner Elementarmethode!`,
+    froebel: `Im Spiel des Lebens gibt es unzählige Fragen! Diese übersteigt mein Wissen. Komm, lass uns über die Spielgaben, den Kindergarten oder die Bedeutung des Spiels sprechen – das sind meine eigentlichen Themen!`,
+    montessori: `Als Ärztin und Wissenschaftlerin sage ich: Ich habe diese Frage in meinen Beobachtungen nicht systematisch untersucht. Frage mich nach den sensitiven Phasen, der vorbereiteten Umgebung, der Freiarbeit oder der Rolle der Erzieherin – dort kann ich dir fundiert antworten.`,
+    steiner: `Die Anthroposophie kennt viele Wege, aber auf diesen bin ich noch nicht gestoßen. Frag mich nach den Septennia, der Nachahmung, den drei Grundsätzen oder der Eurhythmie – da bin ich in meinem Element!`,
+    dewey: `That's a tough one! Diese Frage liegt außerhalb meiner unmittelbaren Erfahrung – und Erfahrung ist ja mein Grundprinzip. Lass uns über Learning by Doing, demokratische Erziehung oder die Projektmethode sprechen!`,
+    malaguzzi: `Caro! Das Kind hat hundert Sprachen – und manchmal stoße ich auch an die Grenzen meiner. Frage mich nach den hundert Sprachen, der Ko-Konstruktion, der Dokumentation oder der Entstehungsgeschichte von Reggio!`
+  };
+  return fallbacks[ped.id] || `Zu diesem Thema habe ich keine direkte Aussage in meinen Schriften. Stelle mir gerne eine Frage zu meiner Biografie, meinen Kernkonzepten oder meiner pädagogischen Methode!`;
+}
+
+function formatMsg(text) {
+  return text
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n/g, '<br>')
+    .replace(/^/, '<p>')
+    .replace(/$/, '</p>');
+}
+
+function addMessage(role, text, animate = false) {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = `message ${role}`;
+  
+  const now = new Date().toLocaleTimeString('de-DE', {hour:'2-digit',minute:'2-digit'});
+  
+  div.innerHTML = `
+    <div class="msg-bubble">${formatMsg(text)}</div>
+    <span class="msg-meta">${now}</span>
+  `;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function showTyping() {
+  const msgs = document.getElementById('chatMessages');
+  const div = document.createElement('div');
+  div.className = 'message bot';
+  div.id = 'typingIndicator';
+  div.innerHTML = `
+    <div class="typing-indicator">
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+    </div>
+  `;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function removeTyping() {
+  const el = document.getElementById('typingIndicator');
+  if (el) el.remove();
+}
+
+function sendMessage(text) {
+  if (!text.trim() || isTyping || !currentPed) return;
+  isTyping = true;
+  document.getElementById('sendBtn').disabled = true;
+  document.getElementById('chatInput').value = '';
+  
+  addMessage('user', text);
+  
+  const delay = 600 + Math.random() * 800 + text.length * 10;
+  showTyping();
+  
+  setTimeout(() => {
+    removeTyping();
+    const response = findResponse(currentPed, text);
+    addMessage('bot', response);
+    isTyping = false;
+    document.getElementById('sendBtn').disabled = false;
+    renderSuggestions(currentPed);
+  }, Math.min(delay, 2200));
+}
+
+function renderSuggestions(ped) {
+  const container = document.getElementById('suggestions');
+  const used = Array.from(document.querySelectorAll('.message.user .msg-bubble'))
+    .map(el => el.textContent.trim().substring(0, 30));
+  
+  const available = ped.suggestions.filter(s => !used.some(u => s.startsWith(u.substring(0, 15))));
+  const show = available.slice(0, 4);
+  
+  container.innerHTML = show.map(s => 
+    `<button class="suggestion-btn" onclick="sendMessage('${s.replace(/'/g,"\\'")}')">
+      ${s}
+    </button>`
+  ).join('');
+}
+
+function openChat(pedId) {
+  currentPed = PEDAGOGUES.find(p => p.id === pedId);
+  if (!currentPed) return;
+  
+  document.getElementById('chatAvatar').src = currentPed.image;
+  document.getElementById('chatAvatar').alt = currentPed.name;
+  document.getElementById('chatName').textContent = currentPed.name;
+  document.getElementById('chatSubtitle').textContent = `${currentPed.years} · ${currentPed.era}`;
+  
+  const msgs = document.getElementById('chatMessages');
+  msgs.innerHTML = '';
+  
+  addMessage('bot', currentPed.greeting);
+  renderSuggestions(currentPed);
+  
+  document.getElementById('modalOverlay').classList.add('open');
+  document.getElementById('chatInput').focus();
+}
+
+function closeChat() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  currentPed = null;
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  GRID RENDERING
+// ═══════════════════════════════════════════════════════════════
+
+function renderGrid() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = PEDAGOGUES.map(p => `
+    <article class="ped-card" onclick="openChat('${p.id}')" role="button" tabindex="0"
+             onkeydown="if(event.key==='Enter'||event.key===' ')openChat('${p.id}')"
+             aria-label="${p.name} Chat öffnen">
+      <img class="ped-card-image"
+           src="${p.image}"
+           alt="Porträt von ${p.name}"
+           width="400" height="300"
+           loading="lazy"
+           onerror="this.style.display='none'">
+      <div class="ped-card-body">
+        <p class="ped-card-era">${p.years} · ${p.era}</p>
+        <h2 class="ped-card-name">${p.name}</h2>
+        <p class="ped-card-tagline">${p.tagline}</p>
+        <button class="ped-card-btn" onclick="event.stopPropagation();openChat('${p.id}')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          Gespräch beginnen
+        </button>
+      </div>
+    </article>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  EVENT LISTENERS & INIT
+// ═══════════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderGrid();
+
+  // Close modal
+  document.getElementById('chatClose').addEventListener('click', closeChat);
+  document.getElementById('modalOverlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('modalOverlay')) closeChat();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeChat();
+  });
+
+  // Send button
+  document.getElementById('sendBtn').addEventListener('click', () => {
+    sendMessage(document.getElementById('chatInput').value.trim());
+  });
+
+  // Enter to send (Shift+Enter = new line)
+  const input = document.getElementById('chatInput');
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage(input.value.trim());
+    }
+  });
+
+  // Auto-resize textarea
+  input.addEventListener('input', () => {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+  });
+
+  // Dark mode toggle
+  (function(){
+    const t = document.querySelector('[data-theme-toggle]');
+    const r = document.documentElement;
+    let d = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+    r.setAttribute('data-theme', d);
+    const moon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    const sun = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+    if (t) {
+      t.innerHTML = d === 'dark' ? sun : moon;
+      t.addEventListener('click', () => {
+        d = d === 'dark' ? 'light' : 'dark';
+        r.setAttribute('data-theme', d);
+        t.innerHTML = d === 'dark' ? sun : moon;
+        t.setAttribute('aria-label', `Zu ${d === 'dark' ? 'hell' : 'dunkel'} wechseln`);
+      });
+    }
+  })();
+});
+</script>
+</body>
+</html>
